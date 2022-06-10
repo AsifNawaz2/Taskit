@@ -27,6 +27,15 @@ class TasksController < ApplicationController
     end
   end
 
+  # POST tasks/:id/toggle
+  #
+  def toggle
+    @task = Task.find(params[:id])
+    @task.update(completed: params[:completed])
+
+    render json: { message: 'Success' }
+  end
+
   private
 
   def task_params
